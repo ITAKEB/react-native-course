@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
-import {Text, View, StyleSheet, Image, Button, Alert, ImageBackground} from "react-native"
+import {Text, View, StyleSheet, Image, Button, Alert, ImageBackground, TouchableOpacity
+,TextInput} from "react-native"
+import { Video } from 'expo-av';
 
 class App extends Component{
 
@@ -8,9 +10,7 @@ class App extends Component{
   render(){
     
     return(
-      <View style={styles.container}>
-
-        
+      <ImageBackground source={{uri:"https://www.xtrafondos.com/wallpapers/rick-y-morty-temporada-4-4114.jpg"}}style={styles.container}>
         
           <View style={styles.header}> 
             <View style={styles.headerLeft}>
@@ -24,13 +24,33 @@ class App extends Component{
 
 
         <View style={styles.body}>
-          <Text style={styles.negrita}>BIENVENIDO A MI PRIMERA APP EN NATIVE UWU</Text>
+          <TouchableOpacity>
+            <Text style={styles.negrita}>BIENVENIDO A MI PRIMERA APP EN NATIVE UWU</Text>
+            <TextInput 
+            maxLength={8}
+            placeholderTextColor="white" 
+            placeholder="Nombre de usuario"
+            style={{borderWidth:1 , borderColor:"white", padding: 5, marginTop:10, color: "white"}}></TextInput>
+            <View style={styles.video}>
+              <Video
+                source={require("./assets/rolitauwu.mp4")}
+                rate={1.0}
+                volume={1.0}
+                isMuted={false}
+                resizeMode="cover"
+                useNativeControls={true}
+                shouldPlay={false}
+                isLooping
+                style={{ width: 300, height: 300 }}
+              />
+            </View>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.perfil}>
           <View>
             <Text style={styles.negrita}>
-              Tomasuwu
+              Tomasasasuwu
             </Text>
           </View>
           <View>
@@ -44,7 +64,7 @@ class App extends Component{
           </View>
         </View>
 
-      </View>
+      </ImageBackground>
       
     
     )
@@ -72,16 +92,23 @@ const styles = StyleSheet.create({
   headerRight:{
     flex:0.4,
   },
+  video:{
+    paddingLeft: 20,
+    paddingRight: 20 
+  },
   body:{
     flex:1,
     alignItems: "center",
     justifyContent: "center",
+    alignContent:"center",
+    marginTop:50
   },
   perfil:{
-    flex: 0.5,
+    flex: 0.3,
     flexDirection: "row",
     justifyContent: "space-around",
-    alignItems: "center"
+    alignItems: "center",
+    marginTop:10
   },  
   logo:{
     width:80,
