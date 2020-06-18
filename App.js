@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Text, View, StyleSheet, Image, Button, Alert, ImageBackground, TouchableOpacity
-,TextInput} from "react-native"
+,TextInput, ScrollView} from "react-native"
 import { Video } from 'expo-av';
 
 class App extends Component{
@@ -11,59 +11,68 @@ class App extends Component{
     
     return(
       <ImageBackground source={{uri:"https://www.xtrafondos.com/wallpapers/rick-y-morty-temporada-4-4114.jpg"}}style={styles.container}>
+        <ScrollView>
+              <View style={styles.header}> 
+                <View style={styles.headerLeft}>
+                  <Image source={ require("./assets/ola.png")} style={styles.logo}/>
+                </View>
         
-          <View style={styles.header}> 
-            <View style={styles.headerLeft}>
-              <Image source={ require("./assets/ola.png")} style={styles.logo}/>
-            </View>
+                <View style={styles.headerRight}>
+                  <Button title="Login" onPress={this.saludo} style={styles.boton}/>
+                </View>  
+              </View>
     
-            <View style={styles.headerRight}>
-              <Button title="Login" onPress={this.saludo} style={styles.boton}/>
-            </View>  
+    
+            <View style={styles.body}>
+              
+                <Text style={styles.negrita}>BIENVENIDO A MI PRIMERA APP EN NATIVE UWU</Text>
+                <TextInput 
+                maxLength={8}
+                placeholderTextColor="white" 
+                placeholder="Nombre de usuario"
+                style={{borderWidth:1 , borderColor:"white", padding: 5, marginTop:10, color: "white"}}></TextInput>
+                  <Video
+                    source={require("./assets/rolitauwu.mp4")}
+                    rate={1.0}
+                    volume={1.0}
+                    isMuted={false}
+                    resizeMode="cover"
+                    useNativeControls={true}
+                    shouldPlay={false}
+                    isLooping
+                    style={{ width: 300, height: 300 }}
+                  />
+    
+                <Image source={ require("./assets/ola.png")} style={styles.logo}/>
+                <Image source={ require("./assets/ola.png")} style={styles.logo}/>
+                <Image source={ require("./assets/ola.png")} style={styles.logo}/>
+                <Image source={ require("./assets/ola.png")} style={styles.logo}/>
+                <Image source={ require("./assets/ola.png")} style={styles.logo}/>
+                <Image source={ require("./assets/ola.png")} style={styles.logo}/>
+                <Image source={ require("./assets/ola.png")} style={styles.logo}/>
+                <Image source={ require("./assets/ola.png")} style={styles.logo}/>
+                <Image source={ require("./assets/ola.png")} style={styles.logo}/>
+              
+          
           </View>
 
-
-        <View style={styles.body}>
-          <TouchableOpacity>
-            <Text style={styles.negrita}>BIENVENIDO A MI PRIMERA APP EN NATIVE UWU</Text>
-            <TextInput 
-            maxLength={8}
-            placeholderTextColor="white" 
-            placeholder="Nombre de usuario"
-            style={{borderWidth:1 , borderColor:"white", padding: 5, marginTop:10, color: "white"}}></TextInput>
-            <View style={styles.video}>
-              <Video
-                source={require("./assets/rolitauwu.mp4")}
-                rate={1.0}
-                volume={1.0}
-                isMuted={false}
-                resizeMode="cover"
-                useNativeControls={true}
-                shouldPlay={false}
-                isLooping
-                style={{ width: 300, height: 300 }}
-              />
+          <View style={styles.perfil}>
+            <View>
+              <Text style={styles.negrita}>
+                Tomasasasuwu
+              </Text>
             </View>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.perfil}>
-          <View>
-            <Text style={styles.negrita}>
-              Tomasasasuwu
-            </Text>
+            <View>
+              <Text  style={styles.negrita}>
+                HolaGuapo
+              </Text>
+            </View>
+              
+            <View>
+              <Image source={{uri: "https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg"}} style={styles.logoP}/>
+            </View>
           </View>
-          <View>
-            <Text  style={styles.negrita}>
-              HolaGuapo
-            </Text>
-          </View>
-            
-          <View>
-            <Image source={{uri: "https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg"}} style={styles.logoP}/>
-          </View>
-        </View>
-
+        </ScrollView>
       </ImageBackground>
       
     
@@ -92,23 +101,18 @@ const styles = StyleSheet.create({
   headerRight:{
     flex:0.4,
   },
-  video:{
-    paddingLeft: 20,
-    paddingRight: 20 
-  },
   body:{
     flex:1,
     alignItems: "center",
     justifyContent: "center",
     alignContent:"center",
-    marginTop:50
   },
   perfil:{
     flex: 0.3,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    marginTop:10
+
   },  
   logo:{
     width:80,
